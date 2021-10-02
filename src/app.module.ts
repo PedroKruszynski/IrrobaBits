@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
+import { StreamersModule } from './streamers/streamers.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CommonModule } from './common/common.module';
     ),
     UsersModule,
     CommonModule,
+    StreamersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
