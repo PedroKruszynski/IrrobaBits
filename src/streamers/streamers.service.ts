@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
@@ -25,7 +25,13 @@ export class StreamersService {
     return streamer;
   }
 
-  create(createStreamerDto: CreateStreamerDto) {
+  async create(createStreamerDto: CreateStreamerDto) {
+
+    const userExists = await this.streamerModel.findOne({ email: createStreamerDto.email }).exec();
+    if (userExists) {
+      throw new BadRequestException(`User ${createStreamerDto.email} exists`);
+    }
+
     const streamer = new this.streamerModel(createStreamerDto);
     return streamer.save();
   }

@@ -1,9 +1,21 @@
-import { IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class CreateStreamerDto {
-  @IsString()
+  @IsEmail()
   readonly email: string;
 
   @IsString()
   readonly password: string;
+
+  @IsString()
+  readonly channelName: string;
+
+  @IsNumber()
+  readonly numberBank: number;
+
+  @IsString()
+  readonly agencyBank: string;
+
+  @IsString()
+  readonly accountBank: string;
 }
