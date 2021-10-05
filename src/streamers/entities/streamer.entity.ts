@@ -8,6 +8,18 @@ export class Streamer extends Document {
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ required: true })
+  channelName: string;
+
+  @Prop({ required: true })
+  numberBank: number;
+
+  @Prop({ required: true })
+  agencyBank: string;
+
+  @Prop({ required: true })
+  accountBank: string;
 }
 
 export const StreamerSchema = SchemaFactory.createForClass(Streamer);

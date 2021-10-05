@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { StreamersModule } from './streamers/streamers.module';
+import { DonationsModule } from './donations/donations.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { StreamersModule } from './streamers/streamers.module';
     UsersModule,
     CommonModule,
     StreamersModule,
+    DonationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

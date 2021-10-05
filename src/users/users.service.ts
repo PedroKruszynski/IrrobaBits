@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
@@ -25,7 +25,13 @@ export class UsersService {
     return user;
   }
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+
+    const userExists = await this.userModel.findOne({ email: createUserDto.email }).exec();
+    if (userExists) {
+      throw new BadRequestException(`User ${createUserDto.email} exists`);
+    }
+
     const user = new this.userModel(createUserDto);
     return user.save();
   }

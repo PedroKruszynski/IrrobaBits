@@ -13,6 +13,7 @@ import { Streamer, StreamerSchema } from './entities/streamer.entity';
       },
     ]),
   ],
+  exports: [StreamersService],
   providers: [StreamersService],
   controllers: [StreamersController],
 })
