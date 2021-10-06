@@ -1,4 +1,4 @@
-# IrrobaBits (NodeJs Coding Test)
+# IrrobaBits (NestJs Coding Test)
 
 ## Index
 
